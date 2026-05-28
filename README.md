@@ -4,7 +4,7 @@ A production-grade, highly scalable, and type-safe backend-only REST API for the
 
 ---
 
-## 🚀 Key Features
+##  Key Features
 
 * **JWT Authentication**: Secure endpoints using custom verification, payload extraction, and automatic bcrypt-based password hashing.
 * **Global CORS & Logging**: Dynamic CORS controls and colored terminal performance logs.
@@ -15,7 +15,7 @@ A production-grade, highly scalable, and type-safe backend-only REST API for the
 
 ---
 
-## 🛠️ Tech Stack & Dependencies
+##  Tech Stack & Dependencies
 
 * **Framework**: Next.js 15 (App Router / API Routes)
 * **Language**: TypeScript
@@ -27,7 +27,7 @@ A production-grade, highly scalable, and type-safe backend-only REST API for the
 
 ---
 
-## 📂 Project Directory Structure
+##  Project Directory Structure
 
 ```text
 CampusIQ/
@@ -74,7 +74,7 @@ CampusIQ/
 
 ---
 
-## ⚡ Quick Start
+##  Quick Start
 
 ### 1. Prerequisites
 Ensure you have Node.js (v18+) and a PostgreSQL instance running (locally or on Neon.tech).
@@ -113,7 +113,7 @@ The server will boot up immediately at `http://localhost:3000`.
 
 ---
 
-## 🔑 Seeded Demo User Account
+##  Seeded Demo User Account
 
 Use this account to obtain a JWT token immediately:
 * **Email**: `demo@campusiq.com`
@@ -121,7 +121,7 @@ Use this account to obtain a JWT token immediately:
 
 ---
 
-## 📡 REST API Specifications
+##  REST API Specifications
 
 All request payloads and query formats are validated strict-type using **Zod**. Every endpoint returns consistent JSON shapes:
 * **Success**: `{ success: true, message: "...", data: {...} }`
@@ -222,7 +222,7 @@ All requests require the `Authorization` header: `Bearer <auth_token>`.
 
 ---
 
-## ☁️ Production Deployment Guide
+##  Production Deployment Guide
 
 ### Database Setup on Neon (PostgreSQL-as-a-Service)
 1. Go to [Neon.tech](https://neon.tech/) and create a free PostgreSQL project.
