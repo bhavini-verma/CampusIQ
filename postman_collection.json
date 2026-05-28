@@ -1,0 +1,319 @@
+{
+  "info": {
+    "_postman_id": "8c35a60e-26f6-41f2-97ba-ff69c9b13994",
+    "name": "College Discovery Platform API",
+    "description": "Production-grade backend-only College Discovery Platform using Next.js App Router, TypeScript, Prisma, and PostgreSQL.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register User",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"testuser@campusiq.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/register",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "register"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login User",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "const responseJson = pm.response.json();",
+                  "if (responseJson.success && responseJson.data.token) {",
+                  "    pm.environment.set(\"auth_token\", responseJson.data.token);",
+                  "    pm.collectionVariables.set(\"auth_token\", responseJson.data.token);",
+                  "}"
+                ],
+                "type": "text/javascript"
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"demo@campusiq.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/auth/login",
+              "host": ["{{base_url}}"],
+              "path": ["api", "auth", "login"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Colleges",
+      "item": [
+        {
+          "name": "Get All Colleges (Default)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/colleges",
+              "host": ["{{base_url}}"],
+              "path": ["api", "colleges"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Colleges with Filters (JEE & Maharashtra)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/colleges?exam=JEE&state=Maharashtra&maxFees=300000",
+              "host": ["{{base_url}}"],
+              "path": ["api", "colleges"],
+              "query": [
+                {
+                  "key": "exam",
+                  "value": "JEE"
+                },
+                {
+                  "key": "state",
+                  "value": "Maharashtra"
+                },
+                {
+                  "key": "maxFees",
+                  "value": "300000"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Colleges Sorted (Fees Ascending)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/colleges?sortBy=fees&order=asc&limit=5",
+              "host": ["{{base_url}}"],
+              "path": ["api", "colleges"],
+              "query": [
+                {
+                  "key": "sortBy",
+                  "value": "fees"
+                },
+                {
+                  "key": "order",
+                  "value": "asc"
+                },
+                {
+                  "key": "limit",
+                  "value": "5"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get College by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/colleges/1",
+              "host": ["{{base_url}}"],
+              "path": ["api", "colleges", "1"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Saved Shortlist (Protected)",
+      "item": [
+        {
+          "name": "Save College",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeId\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/saved",
+              "host": ["{{base_url}}"],
+              "path": ["api", "saved"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Saved Shortlist",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/saved",
+              "host": ["{{base_url}}"],
+              "path": ["api", "saved"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Remove Saved College",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{auth_token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/saved/2",
+              "host": ["{{base_url}}"],
+              "path": ["api", "saved", "2"]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Analytics & Comparison",
+      "item": [
+        {
+          "name": "Admission Predictor",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"exam\": \"JEE\",\n  \"rank\": 1800\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/predict",
+              "host": ["{{base_url}}"],
+              "path": ["api", "predict"]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Compare Colleges",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collegeIds\": [1, 10, 18]\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/compare",
+              "host": ["{{base_url}}"],
+              "path": ["api", "compare"]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [""]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3000",
+      "type": "string"
+    },
+    {
+      "key": "auth_token",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}

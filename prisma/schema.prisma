@@ -1,0 +1,79 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum CollegeType {
+  PUBLIC
+  PRIVATE
+}
+
+model User {
+  id            Int            @id @default(autoincrement())
+  email         String         @unique
+  password      String // Hashed
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  savedColleges SavedCollege[]
+  comparisons   Comparison[]
+  activities    UserActivity[]
+}
+
+model College {
+  id                     Int            @id @default(autoincrement())
+  name                   String
+  location               String
+  state                  String
+  fees                   Float
+  rating                 Float
+  placementAvgSalary     Float
+  placementHighestSalary Float
+  entranceExam           String
+  cutoffRank             Int
+  established            Int
+  type                   CollegeType
+  courses                String[]
+  createdAt              DateTime       @default(now())
+  updatedAt              DateTime       @updatedAt
+  savedBy                SavedCollege[]
+
+  @@index([name])
+  @@index([state])
+  @@index([entranceExam])
+  @@index([cutoffRank])
+}
+
+model SavedCollege {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  collegeId Int
+  savedAt   DateTime @default(now())
+
+  user    User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  college College @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, collegeId]) // A user cannot save the same college twice
+}
+
+model Comparison {
+  id         Int      @id @default(autoincrement())
+  userId     Int? // Nullable if comparison is done by guest
+  collegeIds Int[]
+  createdAt  DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model UserActivity {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  action    String
+  metadata  Json?
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
