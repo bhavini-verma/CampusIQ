@@ -24,6 +24,7 @@ async function main() {
 
     const collegesData = [
         {
+            id: "cklh1bombay00000000000000",
             name: "IIT Bombay",
             location: "Mumbai",
             state: "Maharashtra",
@@ -38,6 +39,7 @@ async function main() {
             courses: ["Computer Science", "Electrical Engineering", "Mechanical Engineering"],
         },
         {
+            id: "cklh2delhi000000000000000",
             name: "IIT Delhi",
             location: "New Delhi",
             state: "Delhi",
@@ -52,6 +54,7 @@ async function main() {
             courses: ["Computer Science", "Chemical Engineering", "Electrical Engineering"],
         },
         {
+            id: "cklh3madras00000000000000",
             name: "IIT Madras",
             location: "Chennai",
             state: "Tamil Nadu",
@@ -66,6 +69,7 @@ async function main() {
             courses: ["Computer Science", "Civil Engineering", "Ocean Engineering"],
         },
         {
+            id: "cklh4kharagpur00000000000",
             name: "IIT Kharagpur",
             location: "Kharagpur",
             state: "West Bengal",
@@ -80,6 +84,7 @@ async function main() {
             courses: ["Computer Science", "Mining Engineering", "Agricultural Engineering"],
         },
         {
+            id: "cklh5roorkee0000000000000",
             name: "IIT Roorkee",
             location: "Roorkee",
             state: "Uttarakhand",
@@ -94,6 +99,7 @@ async function main() {
             courses: ["Computer Science", "Architecture", "Biotechnology"],
         },
         {
+            id: "cklh6trichy00000000000000",
             name: "NIT Trichy",
             location: "Tiruchirappalli",
             state: "Tamil Nadu",
@@ -108,6 +114,7 @@ async function main() {
             courses: ["Computer Science", "Production Engineering", "Chemical Engineering"],
         },
         {
+            id: "cklh7warangal000000000000",
             name: "NIT Warangal",
             location: "Warangal",
             state: "Telangana",
@@ -122,6 +129,7 @@ async function main() {
             courses: ["Computer Science", "Electronics & Communication", "Biotechnology"],
         },
         {
+            id: "cklh8pilani00000000000000",
             name: "BITS Pilani",
             location: "Pilani",
             state: "Rajasthan",
@@ -136,6 +144,7 @@ async function main() {
             courses: ["Computer Science", "Chemical Engineering", "Manufacturing Engineering"],
         },
         {
+            id: "cklh9hyderabad00000000000",
             name: "IIIT Hyderabad",
             location: "Hyderabad",
             state: "Telangana",
@@ -150,6 +159,7 @@ async function main() {
             courses: ["Computer Science", "Electronics & Communication", "Computational Linguistics"],
         },
         {
+            id: "cklh10vellore000000000000",
             name: "VIT Vellore",
             location: "Vellore",
             state: "Tamil Nadu",
@@ -164,6 +174,7 @@ async function main() {
             courses: ["Computer Science", "Information Technology", "Biomedical Engineering"],
         },
         {
+            id: "cklh11jadavpur00000000000",
             name: "Jadavpur University",
             location: "Kolkata",
             state: "West Bengal",
@@ -178,6 +189,7 @@ async function main() {
             courses: ["Computer Science", "Chemical Engineering", "Power Engineering"],
         },
         {
+            id: "cklh12dtudeli0000000000000",
             name: "DTU Delhi",
             location: "New Delhi",
             state: "Delhi",

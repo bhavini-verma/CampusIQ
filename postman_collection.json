@@ -146,9 +146,9 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/api/colleges/1",
+              "raw": "{{base_url}}/api/colleges/cklh1bombay00000000000000",
               "host": ["{{base_url}}"],
-              "path": ["api", "colleges", "1"]
+              "path": ["api", "colleges", "cklh1bombay00000000000000"]
             }
           },
           "response": []
@@ -180,7 +180,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"collegeId\": 2\n}"
+              "raw": "{\n  \"collegeId\": \"cklh2delhi000000000000000\"\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/saved",
@@ -229,9 +229,9 @@
             "method": "DELETE",
             "header": [],
             "url": {
-              "raw": "{{base_url}}/api/saved/2",
+              "raw": "{{base_url}}/api/saved/cklh2delhi000000000000000",
               "host": ["{{base_url}}"],
-              "path": ["api", "saved", "2"]
+              "path": ["api", "saved", "cklh2delhi000000000000000"]
             }
           },
           "response": []
@@ -275,7 +275,7 @@
             ],
             "body": {
               "mode": "raw",
-              "raw": "{\n  \"collegeIds\": [1, 10, 18]\n}"
+              "raw": "{\n  \"collegeIds\": [\n    \"cklh1bombay00000000000000\",\n    \"cklh10vellore000000000000\",\n    \"cklh2delhi000000000000000\"\n  ]\n}"
             },
             "url": {
               "raw": "{{base_url}}/api/compare",
